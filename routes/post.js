@@ -38,11 +38,11 @@ router.get("/search", async (req, res) => {
   }
 });
 
-//get post
-router.get("/:postId", async (req, res) => {
+//get post all
+router.get("/all", async (req, res) => {
   try {
-    const post = await Post.findById(req.params.postId);
-    res.status(200).json(post);
+    const posts = await Post.find().sort({ createdAt: -1 });
+    res.status(200).json(posts);
   } catch (err) {
     res.status(500).json(err);
   }
@@ -55,6 +55,16 @@ router.post("/add", async (req, res) => {
   try {
     const addedPost = await newPost.save();
     res.status(200).json(addedPost);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+//get post
+router.get("/:postId", async (req, res) => {
+  try {
+    const post = await Post.findById(req.params.postId);
+    res.status(200).json(post);
   } catch (err) {
     res.status(500).json(err);
   }
