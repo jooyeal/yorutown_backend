@@ -24,6 +24,22 @@ const UserSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    zipcode: {
+      type: String,
+      required: true,
+    },
+    prefecture: {
+      type: String,
+      required: true,
+    },
+    city: {
+      type: String,
+      required: true,
+    },
+    area: {
+      type: String,
+      required: true,
+    },
     isAdmin: {
       type: Boolean,
       default: false,
